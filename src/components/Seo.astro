@@ -1,0 +1,32 @@
+---
+import type { SEO } from '@data/SEO';
+
+interface Props {
+  seo?: SEO;
+}
+
+// Default data if no SEO is passed in
+const defaultSEO: SEO = {
+    site: 'https://blackorchestra.net',
+    site_name: "Black Orchestra",
+    title: "Black Orchestra",
+    image: 'https://files.catbox.moe/c2e2dq.png',
+    description:
+    `Black Orchestra: World Front.`
+};
+
+const { seo = defaultSEO }: Props = Astro.props;
+---
+<!-- seo metadata -->
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.description} />
+<meta property="og:image" content={seo.image ?? 'https://files.catbox.moe/c2e2dq.png'} />
+<meta property="og:url" content={seo.site} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={seo.site_name} />
+<meta property="og:image:alt" content="BO logo" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={seo.description} />
+<meta name="twitter:description" content={seo.description} />
+<meta name="twitter:image" content={seo.image} />
+<meta name="description" content={seo.description} />
