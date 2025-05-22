@@ -8,9 +8,10 @@ import Seo from '@components/Seo.astro';
 interface Props {
   title?: string;
   seo?: SEO;
+  pageTitle?: string;
 }
 
-const { title = "Black Orchestra: World Front", seo }: Props = Astro.props;
+const { title = "Black Orchestra: World Front", seo, pageTitle = '' }: Props = Astro.props;
 
 import BO_Banner from '@assets/black_orchestra_logo.png'
 import BO_BG from '@assets/Background.png'
@@ -30,7 +31,6 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
     <meta charset="UTF-8">
 	<Seo seo={seo} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Black Orchestra: World Front </title>
     <link rel="stylesheet" href="/index.css">
     <link rel="icon" href="/public/BO_Square.png">
     <title>{title}</title>
@@ -46,7 +46,7 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
 
         <div class="MediaWrapper">
             <div class="MediaItem">
-                <a href="/404.html">
+                <a href="/404">
                     <SteamIcon class="icon" /> </a>
                 <span class="description">Visit Steam</span>
             </div>
@@ -67,13 +67,13 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
             </div>
         </div>
 
-        <h1 class="Title">  </h1>
+        <h1 class="Title"> {pageTitle} </h1>
 
         <div class="WidgetWrapper">
             <a class="Widget" href="/"> Home </a>
-            <a class="Widget" href="/changelog.html"> Changelog </a>
+            <a class="Widget" href="/changelog"> Changelog </a>
             <a class="Widget" href="https://wiki.blackorchestra.net"> Wiki </a>
-            <a class="Widget" href="/contact.html"> Contact </a>
+            <a class="Widget" href="/contact"> Contact </a>
             <!-- <a class="Widget" href="/resources.html"> Resources </a> -->
         </div>
 
