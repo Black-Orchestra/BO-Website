@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Generate routes for all blog posts
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post: any) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout pageTitle={post.data.pageTitle} title={post.data.title}>
+    <div class="containerStyle1" id="Container1"> <!-- Blog1 -->
+        <div class="boxWrapper">
+            <Content />
+        </div>
+    </div>
+</Layout>

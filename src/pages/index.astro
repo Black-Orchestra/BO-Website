@@ -1,65 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 const pageTitle = ""
 const title = "Black Orchestra: World Front"
 ---
 
 <Layout pageTitle={pageTitle} title={title}>
-<div class="containerStyle1" id="Container1"> <!-- Blog1 -->
-
+<div class="containerStyle1" id="Container1">
+    {posts.map((post) => (
         <div class="boxWrapper">
-            <h> December 26th, 2023 </h>
-            <h> Black Orchestra has reached Top 5 on ModDB's "Mod of The Year"!</h>
-            <h> Merry Christmas and Happy New Year, from the Black Orchestra Team </h>
-            <img
-                src="https://web.archive.org/web/20091021173056im_/http://www.geocities.com/candystriper38/santa_in_sleigh.gif">
-            <a href="/blogs/ModDB-MODY" class="mb-[40px]"> To read more, please click on this link </a>
+            <h>{post.data.date}</h>
+            <h>{post.data.title}</h>
+            {post.data.description && <p>{post.data.description}</p>}
+            <img src={post.data.img} alt={post.data.title}>
+            <a href={`/blogs/${post.slug}`} class="mb-[40px]">Read more</a>
 
+            <hr class="divider">
         </div>
-
-        <hr class="divider"> <!-- Divider -->
-
-        <div class="boxWrapper">
-            <h> December 8th, 2023 </h>
-            <h> Please welcome our Black Orchestra Map Update! </h>
-
-            <p> All maps set in the Mediterranean theatre of war including several Eastern, Western and Pacific front
-                maps are produced by Level Artist/Level Designer North_Dumpling with additional asset assistance from
-                FaNgum. </p>
-
-            <a href="/blogs/map-update" class="mb-[40px]"> To read more, please click on this link </a>
-
-        </div>
-
-        <hr class="divider"> <!-- Divider -->
-
-        <div class="boxWrapper">
-            <h> December 1th, 2023 </h>
-            <h> Vote for us on ModDB's Mod of The Year! </h>
-            <h> Embed has been removed due to performance issues :(, just click on the ModDB icon above for the link
-            </h>
-            <!-- <iframe src="https://www.moddb.com/mods/widget/moty/black-orchestra37-54?year=2023"></iframe> -->
-            <h> P.S. you don't need to be logged in to vote :) </h>
-        </div>
-
-        <hr class="divider"> <!-- Divider -->
-
-        <div class="boxWrapper"> <!-- Blog2 -->
-            <h> November 30th, 2023 </h>
-            <h> Welcome to the official Black Orchestra: World Front website </h>
-            <p> I created this website so that we could have an embed for our ModDB competition as a gag. But then I
-                realized, if I come to this length,
-                spent actual money on a domain and time sorting all of this out, why shouldn't I do something
-                greater? </p>
-            <p> Anyway, all of us at the Black Orchestra development team have thought that this was a fun idea, and
-                also an opportunity to be more serious in our development.
-                We'll see what we can do with this website in the future. Maybe... this place will benefit as a
-                development blog. </p>
-            <img src="https://files.catbox.moe/turr6a.PNG">
-            <p> As a starter, here's the German M40 field coat I made a while ago. Well... I guess that's all I'm
-                willing to share. I'm not a blogger. - Hoover </p>
-        </div>
-
-    </div>
+    ))}
+</div>
 </Layout>
