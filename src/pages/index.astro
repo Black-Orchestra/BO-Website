@@ -16,9 +16,8 @@ const title = "Black Orchestra: World Front"
             <h>{post.data.date}</h>
             <h>{post.data.title}</h>
             {post.data.description && <p>{post.data.description}</p>}
-            <img src={post.data.img} alt={post.data.title}>
+            {post.data.img && (<img src={post.data.img} alt={post.data.title} />)}
             <a href={`/blogs/${post.slug}`} class="mb-[40px]">Read more</a>
-
             <hr class="divider">
         </div>
     ))}
