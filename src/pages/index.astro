@@ -23,7 +23,7 @@ const title = "Black Orchestra: World Front"
 <div class="containerStyle1" id="Container1">
     {latestPosts.map((post) => (
         <div class="boxWrapper">
-            <h>{post.data.date}</h>
+            <center> <h>{post.data.date}</h> </center>
             <h>{post.data.title}</h>
             {post.data.description && <p>{post.data.description}</p>}
             {post.data.img && (<img src={post.data.img} alt={post.data.title} />)}
