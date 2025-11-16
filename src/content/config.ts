@@ -11,6 +11,17 @@ const blogCollection = defineCollection({
   }),
 });
 
+const changelogCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    pageTitle: z.string(),
+    description: z.string().optional(),
+    img: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
+  changelog: changelogCollection,
 };

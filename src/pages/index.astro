@@ -2,16 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+// Blog posts
 const posts = await getCollection('blog');
-posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const pageTitle = ""
+// Changelogs
+const changelogs = await getCollection('changelog');
+
+// Combine and sort by date
+const combined = [...posts, ...changelogs].sort((a, b) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const latestPosts = combined.slice(0, 3); // Get only the top 3 latest posts
+
+const pageTitle = "Latest"
 const title = "Black Orchestra: World Front"
+// Todo: convert index and latest to use the same reusable component
 ---
-
 <Layout pageTitle={pageTitle} title={title}>
 <div class="containerStyle1" id="Container1">
-    {posts.map((post) => (
+    {latestPosts.map((post) => (
         <div class="boxWrapper">
             <h>{post.data.date}</h>
             <h>{post.data.title}</h>

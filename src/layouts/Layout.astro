@@ -74,8 +74,8 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
 
         <div class="WidgetWrapper">
             <a class="Widget" href="/"> Home </a>
-            <a class="Widget" href="/latest"> Latest </a>
-            <a class="Widget" href="/changelog"> Changelog </a>
+            <a class="Widget" href="/blogs"> Blogs </a>
+            <a class="Widget" href="/changelog"> Changelogs </a>
             <a class="Widget" href="https://wiki.blackorchestra.net"> Wiki </a>
             <a class="Widget" href="/contact"> Contact </a>
             <!-- <a class="Widget" href="/resources.html"> Resources </a> -->
@@ -96,7 +96,7 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
 </html>
 
 <style is:global>
-
+    @reference "tailwindcss";
 
 .overlay {
     position: fixed;
@@ -270,12 +270,12 @@ body {
 }
 
 .boxWrapper {
+    @apply px-2;
     margin-top: 40px;
     width: 100%;
     display:flex;
     justify-content: normal;
     flex-direction: column;
-	align-items: center;
     color: aliceblue;
     font-size: 1.5rem;
 }
