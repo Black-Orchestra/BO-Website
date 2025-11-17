@@ -11,14 +11,14 @@ const title = "Black Orchestra: World Front"
 
 <Layout pageTitle={pageTitle} title={title}>
 <div class="containerStyle1" id="Container1">
-    {posts.map((post) => (
+    {posts.map((post, index) => (
         <div class="boxWrapper">
             <center> <h>{post.data.date}</h> </center>
             <center> <h>{post.data.title}</h> </center>
             {post.data.description && <p>{post.data.description}</p>}
             {post.data.img && (<img src={post.data.img} alt={post.data.title} />)}
             <a href={`/blogs/${post.slug}`} class="mb-[40px]">Read more</a>
-            <hr class="divider">
+            {index < posts.length - 1 && <hr class="divider">}
         </div>
     ))}
 </div>

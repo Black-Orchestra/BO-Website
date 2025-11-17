@@ -17,29 +17,10 @@ const { Content } = await post.render();
 
 <Layout pageTitle={post.data.pageTitle} title={post.data.title}>
     <div class="containerStyle1" id="Container1"> <!-- Blog1 -->
-        <div class="boxWrapper">
-            <center> <h1>Version {post.slug.replace('-', '.')} </h1></center>
+        <div class="boxWrapper markdown">
+            <center> <h2>{post.data.date}</h2> </center>
+            <center> <h1> {post.data.title} </h1></center>
             <Content />
         </div>
     </div>
 </Layout>
-
-<style is:global>
-    @reference "tailwindcss";
-    h1 {
-        @apply text-6xl;
-    }
-    h2 {
-        @apply text-4xl my-1;
-    }
-    h3 {
-        @apply text-2xl mt-1;
-    }
-    ul {
-        @apply list-disc;
-    }
-
-    .boxWrapper {
-        @apply my-2
-    }
-</style>

@@ -17,19 +17,24 @@ const latestPosts = combined.slice(0, 3); // Get only the top 3 latest posts
 
 const pageTitle = "Latest"
 const title = "Black Orchestra: World Front"
-// Todo: convert index and latest to use the same reusable component
+
+// Render content for each post
+const renderedPosts = await Promise.all(
+    latestPosts.map(async (post) => ({
+        post,
+        Content: (await post.render()).Content
+    }))
+);
 ---
 <Layout pageTitle={pageTitle} title={title}>
-<div class="containerStyle1" id="Container1">
-    {latestPosts.map((post) => (
-        <div class="boxWrapper">
-            <center> <h>{post.data.date}</h> </center>
-            <h>{post.data.title}</h>
-            {post.data.description && <p>{post.data.description}</p>}
-            {post.data.img && (<img src={post.data.img} alt={post.data.title} />)}
-            <a href={`/blogs/${post.slug}`} class="mb-[40px]">Read more</a>
-            <hr class="divider">
-        </div>
-    ))}
-</div>
+    <div class="containerStyle1" id="Container1">
+        {renderedPosts.map(({ post, Content }, index) => (
+            <div class="boxWrapper markdown">
+                <center> <h2>{post.data.date}</h2> </center>
+                <center> <h1> {post.data.title} </h1></center>
+                <Content />
+                {index < renderedPosts.length - 1 && <hr class="divider">}
+            </div>
+        ))}
+    </div>
 </Layout>

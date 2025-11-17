@@ -70,7 +70,7 @@ import YouTubeIcon from '@assets/icons/Youtube.svg'
             </div>
         </div>
 
-        <h1 class="Title"> {pageTitle} </h1>
+        <h1 class="Title mb-1"> {pageTitle} </h1>
 
         <div class="WidgetWrapper">
             <a class="Widget" href="/"> Home </a>
@@ -131,7 +131,7 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; /* Center the background image */
+    background-position: center;
 }
 
 .main {
@@ -169,7 +169,6 @@ body {
 }
 
 .Title {
-
     color: #fff;
     font-size: 5rem;
 }
@@ -230,19 +229,17 @@ body {
 }
 
 .containerStyle1 {
+    @apply my-1 px-1;
     --flex-alignment: flex-start;
     display: flex;
 
     align-items: center;
-    padding-left:20px;
-    padding-right:20px;
-    flex-direction: column; /* Set flex-direction to column */
+    flex-direction: column;
     backdrop-filter: blur(0.275rem);
     border-color: rgba(255,255,255,0.271);
     border-style: solid;
     border-width: 1px;
     border-radius: 0.75rem;
-    margin-bottom: 20px;
 }
 
 .container {
@@ -270,8 +267,7 @@ body {
 }
 
 .boxWrapper {
-    @apply md:px-2 px-0 md:text-2xl text-xl;
-    margin-top: 40px;
+    @apply my-1 md:px-2 px-0 md:text-2xl text-xl;
     width: 100%;
     display:flex;
     justify-content: normal;
@@ -303,11 +299,6 @@ body {
 
 .boxWrapper .button:hover {
     background-color: #878787;
-}
-
-.boxWrapper h1,
-.boxWrapper h {
-    margin-bottom: 40px;
 }
 
 .boxWrapper a {
@@ -349,7 +340,7 @@ body {
 .divider {
     border: 1px solid rgba(255,255,255,0.271); /* Set border properties */
     width: 100%;
-    margin: 0px; /* Adjust margin as needed */
+    margin: 0px;
 }
 
 /* Specific settings to help with mobile devices*/
@@ -401,4 +392,23 @@ img {
     opacity: 0.5;
     margin: 2rem;
 }
+</style>
+
+<style is:global>
+    @reference "tailwindcss";
+    .markdown h1 {
+        @apply text-5xl mb-1;
+    }
+    .markdown h2 {
+        @apply text-4xl my-1;
+    }
+    .markdown h3 {
+        @apply text-2xl mt-1;
+    }
+    .markdown ul {
+        @apply list-disc;
+    }
+    .boxWrapper {
+        @apply my-2
+    }
 </style>

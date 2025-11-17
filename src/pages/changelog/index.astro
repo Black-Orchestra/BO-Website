@@ -8,15 +8,16 @@ posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).get
 const pageTitle = "Changelog"
 const title = "Black Orchestra: World Front"
 ---
+
 <Layout pageTitle={pageTitle} title={title}>
 <div class="containerStyle1" id="Container1">
-    {posts.map((post) => (
+    {posts.map((post, index) => (
         <div class="boxWrapper">
             <center> <h>{post.data.date}</h> </center>
             <center> <h>{post.data.title}</h> </center>
             {post.data.img && (<img src={post.data.img} alt={post.data.title} />)}
             <a href={`/changelog/${post.slug.replace('-', '.')}`} class="mb-[40px]">Read more</a>
-            <hr class="divider">
+            {index < posts.length - 1 && <hr class="divider">}
         </div>
     ))}
 </div>
