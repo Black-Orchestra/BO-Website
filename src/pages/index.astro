@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 // Blog posts
-const posts = await getCollection('blog');
+const posts = await getCollection('blogs');
 
 // Changelogs
 const changelogs = await getCollection('changelog');
@@ -33,6 +33,7 @@ const renderedPosts = await Promise.all(
                 <center> <h2>{post.data.date}</h2> </center>
                 <center> <h1> {post.data.title} </h1></center>
                 <Content />
+                <a href={`/${post.collection}/${post.slug}`} class="my-1">Go to page</a>
                 {index < renderedPosts.length - 1 && <hr class="divider">}
             </div>
         ))}

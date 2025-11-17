@@ -22,6 +22,6 @@ const changelogCollection = defineCollection({
 });
 
 export const collections = {
-  blog: blogCollection,
+  blogs: blogCollection,
   changelog: changelogCollection,
 };
