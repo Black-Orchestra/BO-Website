@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 // Generate routes for all blog posts
 export async function getStaticPaths() {
-  const blogPosts = await getCollection('blog');
+  const blogPosts = await getCollection('blogs');
   return blogPosts.map((post: any) => ({
     params: { slug: post.slug },
     props: { post },
